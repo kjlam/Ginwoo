@@ -15,8 +15,13 @@ public class Terminal
         startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
         startInfo.FileName = "cmd.exe";
         //process.StartInfo.WorkingDirectory = @"c:\";
-        //startInfo.Arguments = "/C cat buggy.txt";
-        startInfo.Arguments = "/C echo Hello World";
+
+        //Set the current directory.
+        string dir = @"C:\Users\Jessica";
+		Directory.SetCurrentDirectory(dir);
+
+        startInfo.Arguments = "/C dir";
+        //startInfo.Arguments = "/C echo Hello World";
         process.StartInfo = startInfo;
 
         process.StartInfo.UseShellExecute = false;
@@ -31,6 +36,7 @@ public class Terminal
         process.WaitForExit();
         process.Close();
 
+        Debug.WriteLine("Current directory: {0}", Directory.GetCurrentDirectory());
         Debug.WriteLine(output);
         //Console.ReadLine();
         return output;
