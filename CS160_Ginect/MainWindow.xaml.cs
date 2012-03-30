@@ -26,7 +26,7 @@ namespace CS160_Ginect
         public MainWindow()
         {
             InitializeComponent();
-            String output = Terminal.testTerminal();
+            String output = Terminal.TestModularTerminal();
             MessageBox.Show(output);
         }
 
