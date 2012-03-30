@@ -12,6 +12,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+// For terminal backend
+using System.Diagnostics;
+using System.IO;
+
 namespace CS160_Ginect
 {
     /// <summary>
@@ -22,6 +26,32 @@ namespace CS160_Ginect
         public MainWindow()
         {
             InitializeComponent();
+            String output = Terminal.testTerminal();
+            MessageBox.Show(output);
+        }
+
+        private void testTerminal()
+        {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C echo Hello World";
+            process.StartInfo = startInfo;
+
+            process.StartInfo.UseShellExecute = false;
+            process.StartInfo.RedirectStandardOutput = true;
+            process.Start();
+
+            StreamReader myStreamReader = process.StandardOutput;
+            string myString = myStreamReader.ReadLine();
+
+            MessageBox.Show(myString);
+
+            process.WaitForExit();
+            process.Close();
         }
     }
+
+
 }

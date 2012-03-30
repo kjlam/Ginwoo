@@ -1,0 +1,13 @@
+C:\Users\Jessica\documents\visual studio 2010\Projects\CS160_Ginect\CS160_Ginect\bin\Debug\CS160_Ginect.exe
+C:\Users\Jessica\documents\visual studio 2010\Projects\CS160_Ginect\CS160_Ginect\bin\Debug\CS160_Ginect.pdb
+C:\Users\Jessica\documents\visual studio 2010\Projects\CS160_Ginect\CS160_Ginect\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Jessica\documents\visual studio 2010\Projects\CS160_Ginect\CS160_Ginect\obj\x86\Debug\MainWindow.baml
+C:\Users\Jessica\documents\visual studio 2010\Projects\CS160_Ginect\CS160_Ginect\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Jessica\documents\visual studio 2010\Projects\CS160_Ginect\CS160_Ginect\obj\x86\Debug\App.g.cs
+C:\Users\Jessica\documents\visual studio 2010\Projects\CS160_Ginect\CS160_Ginect\obj\x86\Debug\CS160_Ginect_MarkupCompile.cache
+C:\Users\Jessica\documents\visual studio 2010\Projects\CS160_Ginect\CS160_Ginect\obj\x86\Debug\CS160_Ginect.g.resources
+C:\Users\Jessica\documents\visual studio 2010\Projects\CS160_Ginect\CS160_Ginect\obj\x86\Debug\CS160_Ginect.Properties.Resources.resources
+C:\Users\Jessica\documents\visual studio 2010\Projects\CS160_Ginect\CS160_Ginect\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Jessica\documents\visual studio 2010\Projects\CS160_Ginect\CS160_Ginect\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Jessica\documents\visual studio 2010\Projects\CS160_Ginect\CS160_Ginect\obj\x86\Debug\CS160_Ginect.exe
+C:\Users\Jessica\documents\visual studio 2010\Projects\CS160_Ginect\CS160_Ginect\obj\x86\Debug\CS160_Ginect.pdb
