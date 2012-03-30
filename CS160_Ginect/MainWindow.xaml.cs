@@ -29,28 +29,6 @@ namespace CS160_Ginect
             String output = Terminal.TestModularTerminal();
             MessageBox.Show(output);
         }
-
-        private void testTerminal()
-        {
-            System.Diagnostics.Process process = new System.Diagnostics.Process();
-            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
-            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
-            startInfo.FileName = "cmd.exe";
-            startInfo.Arguments = "/C echo Hello World";
-            process.StartInfo = startInfo;
-
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.Start();
-
-            StreamReader myStreamReader = process.StandardOutput;
-            string myString = myStreamReader.ReadLine();
-
-            MessageBox.Show(myString);
-
-            process.WaitForExit();
-            process.Close();
-        }
     }
 
 
