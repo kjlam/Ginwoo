@@ -28,7 +28,7 @@ namespace CS160_Ginect
             InitializeComponent();
 
             // For simple testing
-            
+            /*
             String output = Terminal.TestModularTerminal();
             MessageBox.Show(output);
             List<String> filesList = new List<string>();
@@ -42,8 +42,13 @@ namespace CS160_Ginect
             {
                 MessageBox.Show("C: regex matches");
             }
-             * */
+     
             output = Terminal.ParseStdOut(output);
+            MessageBox.Show(output);
+            */
+
+            //String output = Terminal.GetLatestCommitID();
+            String output = Terminal.GitTagLatestCommit("latestCommit");
             MessageBox.Show(output);
         }
     }

@@ -27,16 +27,49 @@ public class Terminal
         // TODO: check stdout for success or failure
     }
 
-    static internal void GitTag(String tagName, String commitID)
+    static internal String GitTagLatestCommit(String tagName)
     {
-        String stdout = ExecuteCommand(workingDirectory, "git tag " + tagName + " " + commitID);
+        String latestCommitID = GetLatestCommitID();
+        return GitTag(tagName, latestCommitID);
+    }
+
+    static private String GetLatestCommitID()
+    {
+        char[] delimiterChars = {' '};
+        String latestCommit = null;
+
+        String unpushedCommits = ExecuteCommand(workingDirectory, "git log origin/master..HEAD");
+        unpushedCommits = ParseStdOut(unpushedCommits);
+
+        using (StringReader reader = new StringReader(unpushedCommits))
+        {
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                if (Regex.IsMatch(line, "^commit .+$"))
+                {
+                    latestCommit = line;
+                    break;
+                }
+            }
+        }
+
+        String[] splitLatestCommit = latestCommit.Split(delimiterChars);
+        return splitLatestCommit[1];
+    }
+
+    static private String GitTag(String tagName, String commitID)
+    {
+        String stdout = ExecuteCommand(workingDirectory, "git tag -f " + tagName + " " + commitID);
 
         // TODO: check stdout for success or failure
+
+        return ParseStdOut(stdout);
     }
 
     static internal void GitPush()
     {
-        String stdout = ExecuteCommand(workingDirectory, "git push");
+        String stdout = ExecuteCommand(workingDirectory, "git push --tags");
 
         // TODO: check stdout for success or failure
     }
