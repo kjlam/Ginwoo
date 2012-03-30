@@ -2,9 +2,12 @@
 using System.Diagnostics;
 using System.IO;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 public class Terminal
 {
+    static internal String workingDirectory = @"C:\Users\Jessica\Ginect";
+
     public Terminal()
     {
     }
@@ -19,35 +22,32 @@ public class Terminal
             filesStr += file;
         });
 
-        Process process = InitializeCmdTerminal(@"C:\Users\Jessica", "git add" + filesStr);
-        String stdout = ReadStdOut(ref process);
+        String stdout = ExecuteCommand(workingDirectory, "git add" + filesStr);
 
         // TODO: check stdout for success or failure
     }
 
     static internal void GitTag(String tagName, String commitID)
     {
-        Process process = InitializeCmdTerminal(@"C:\Users\Jessica", "git tag " + tagName + " " + commitID);
-        String stdout = ReadStdOut(ref process);
+        String stdout = ExecuteCommand(workingDirectory, "git tag " + tagName + " " + commitID);
 
         // TODO: check stdout for success or failure
     }
 
     static internal void GitPush()
     {
-        Process process = InitializeCmdTerminal(@"C:\Users\Jessica", "git push");
-        String stdout = ReadStdOut(ref process);
+        String stdout = ExecuteCommand(workingDirectory, "git push");
 
         // TODO: check stdout for success or failure
     }
 
-    static private Process InitializeCmdTerminal(String directory, String command) 
+    static private String ExecuteCommand(String directory, String command) 
     {
         System.Diagnostics.Process process = new System.Diagnostics.Process();
         System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
 
         // Make it so the terminal isn't displayed on the screen when it's executing commands
-        startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+        startInfo.CreateNoWindow = true;
 
         // The cmd terminal
         startInfo.FileName = "cmd.exe";
@@ -60,11 +60,6 @@ public class Terminal
         process.StartInfo.UseShellExecute = false;
         process.StartInfo.RedirectStandardOutput = true;
 
-        return process;
-    }
-
-    static private String ReadStdOut(ref Process process)
-    {
         process.Start();
 
         string stdout = process.StandardOutput.ReadToEnd();
@@ -74,11 +69,39 @@ public class Terminal
         return stdout;
     }
 
+    /*
+     * ParseStdOut()
+     * 
+     * Strips out the command prompt from stdout. The command prompt starts
+     * with "C:".
+     */
+    static internal String ParseStdOut(String stdout)
+    {
+        String boundary = "^C:.*$";
+        StringWriter writer = new StringWriter();
+        int canWrite = 0;
+
+        using (StringReader reader = new StringReader(stdout))
+        {
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                if (Regex.IsMatch(line, boundary))
+                {
+                    if (++canWrite > 1)
+                        break;
+                }
+                else
+                    writer.WriteLine(line);
+            }
+        }
+        return writer.ToString();
+    }
+
     // Just for light testing
     static internal String TestModularTerminal()
     {
-        Process process = InitializeCmdTerminal(@"C:\Users\Jessica\Downloads", "dir");
-        return ReadStdOut(ref process);
+        return ExecuteCommand(workingDirectory, "git log");
 
         // TODO: check stdout for success or failure
     }

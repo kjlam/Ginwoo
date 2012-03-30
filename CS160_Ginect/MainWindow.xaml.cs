@@ -26,7 +26,24 @@ namespace CS160_Ginect
         public MainWindow()
         {
             InitializeComponent();
+
+            // For simple testing
+            
             String output = Terminal.TestModularTerminal();
+            MessageBox.Show(output);
+            List<String> filesList = new List<string>();
+            filesList.Add("file1");
+            filesList.Add("file2");
+            filesList.Add("file3");
+            //output = Terminal.GitAddFilesToCommit(filesList);
+            //MessageBox.Show(output);
+            /*
+            if (System.Text.RegularExpressions.Regex.IsMatch(@"C:\Users\Jessica\Ginect>@set ErrorLevel=%ErrorLevel%", "^C:.*"))
+            {
+                MessageBox.Show("C: regex matches");
+            }
+             * */
+            output = Terminal.ParseStdOut(output);
             MessageBox.Show(output);
         }
     }
