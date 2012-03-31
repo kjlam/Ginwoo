@@ -28,20 +28,22 @@ namespace CS160_Ginect
             InitializeComponent();
 
             // For simple testing
-            
+            /*
             String output = Terminal.TestModularTerminal();
             MessageBox.Show(output);
+            
             List<String> filesList = new List<string>();
             filesList.Add("jessica.txt");
             filesList.Add("jessica2.txt");
             output = Terminal.GitAddFilesToCommit(filesList);
             MessageBox.Show(output);
+             * */
             
             
             //String output = Terminal.GetLatestCommitID();
-            //String output = Terminal.GitTagLatestCommit("latestCommit");
+            String output = Terminal.GitTagLatestCommit("lastCommit");
             //String output = Terminal.GitPush();
-            //MessageBox.Show(output);
+            MessageBox.Show(output);
         }
     }
 
