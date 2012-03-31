@@ -7,12 +7,13 @@ using System.Text.RegularExpressions;
 public class Terminal
 {
     static internal String workingDirectory = @"C:\Users\Jessica\Ginect";
+    static internal String password = "chewie#3";
 
     public Terminal()
     {
     }
 
-    static internal void GitAddFilesToCommit(List<String> filesList)
+    static internal String GitAddFilesToCommit(List<String> filesList)
     {
         String filesStr = "";
 
@@ -25,6 +26,8 @@ public class Terminal
         String stdout = ExecuteCommand(workingDirectory, "git add" + filesStr);
 
         // TODO: check stdout for success or failure
+
+        return ParseStdOut(stdout);
     }
 
     static internal String GitTagLatestCommit(String tagName)
@@ -67,11 +70,13 @@ public class Terminal
         return ParseStdOut(stdout);
     }
 
-    static internal void GitPush()
+    static internal String GitPush()
     {
-        String stdout = ExecuteCommand(workingDirectory, "git push --tags");
+        String stdout = ExecuteCommand(workingDirectory, "git push");
 
         // TODO: check stdout for success or failure
+
+        return ParseStdOut(stdout);
     }
 
     static private String ExecuteCommand(String directory, String command) 
@@ -108,7 +113,7 @@ public class Terminal
      * Strips out the command prompt from stdout. The command prompt starts
      * with "C:".
      */
-    static internal String ParseStdOut(String stdout)
+    static private String ParseStdOut(String stdout)
     {
         String boundary = "^C:.*$";
         StringWriter writer = new StringWriter();
@@ -134,7 +139,7 @@ public class Terminal
     // Just for light testing
     static internal String TestModularTerminal()
     {
-        return ExecuteCommand(workingDirectory, "git log");
+        return ParseStdOut(ExecuteCommand(workingDirectory, "git log"));
 
         // TODO: check stdout for success or failure
     }

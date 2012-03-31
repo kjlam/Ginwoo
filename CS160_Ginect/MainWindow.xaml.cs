@@ -28,28 +28,20 @@ namespace CS160_Ginect
             InitializeComponent();
 
             // For simple testing
-            /*
+            
             String output = Terminal.TestModularTerminal();
             MessageBox.Show(output);
             List<String> filesList = new List<string>();
-            filesList.Add("file1");
-            filesList.Add("file2");
-            filesList.Add("file3");
-            //output = Terminal.GitAddFilesToCommit(filesList);
-            //MessageBox.Show(output);
-            /*
-            if (System.Text.RegularExpressions.Regex.IsMatch(@"C:\Users\Jessica\Ginect>@set ErrorLevel=%ErrorLevel%", "^C:.*"))
-            {
-                MessageBox.Show("C: regex matches");
-            }
-     
-            output = Terminal.ParseStdOut(output);
+            filesList.Add("jessica.txt");
+            filesList.Add("jessica2.txt");
+            output = Terminal.GitAddFilesToCommit(filesList);
             MessageBox.Show(output);
-            */
-
+            
+            
             //String output = Terminal.GetLatestCommitID();
-            String output = Terminal.GitTagLatestCommit("latestCommit");
-            MessageBox.Show(output);
+            //String output = Terminal.GitTagLatestCommit("latestCommit");
+            //String output = Terminal.GitPush();
+            //MessageBox.Show(output);
         }
     }
 
