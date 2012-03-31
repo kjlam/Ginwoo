@@ -51,7 +51,7 @@ namespace CS160_Ginect
             int output = Terminal.TestModularTerminal();
             System.Windows.MessageBox.Show(output.ToString());
 
-            SendKeyTestCmdExe();
+            //SendKeyTestCmdExe();
         }
 
         // Get a handle to an application window.
@@ -98,14 +98,14 @@ namespace CS160_Ginect
             IntPtr childHandle;
 
             //try to get a handle to IE's toolbar container
-            childHandle = FindWindow(null, "C:\\Windows\\system32\\cmd.exe");
+            childHandle = FindWindow(null, @"C:\Windows\system32\cmd.exe");
 
             if (childHandle == IntPtr.Zero)
             {
                 System.Windows.MessageBox.Show("cmd.exe is not running.");
             }
             SetForegroundWindow(childHandle);
-            SendKeys.SendWait("chewie#3{ENTER}");
+            SendKeys.SendWait("password{ENTER}");
 
             /*
             // Get a handle to the Calculator application. The window class

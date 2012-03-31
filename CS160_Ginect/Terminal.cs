@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 public class Terminal
 {
     static internal String workingDirectory = @"C:\Users\Jessica\Ginect";
-    static internal String password = @"chewie#3";
+    static internal String password = "password";
 
     public Terminal()
     {
@@ -182,9 +182,9 @@ public class Terminal
         ProcessStartInfo startInfo = new ProcessStartInfo();
 
         // Make it so the terminal isn't displayed on the screen when executing commands
-        // startInfo.CreateNoWindow = true;
+        //startInfo.CreateNoWindow = true;
 
-        //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Maximized;
+        //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
 
         // The cmd terminal
         startInfo.FileName = "cmd.exe";
@@ -202,8 +202,9 @@ public class Terminal
         
 
         process.Start();
-        System.Threading.Thread.Sleep(10000);
-        SendKeyTestCmdExe();
+        //System.Threading.Thread.Sleep(10000);
+        SendKeyTestCmdExe(process.MainWindowHandle);
+
         //process.StandardInput.WriteLine("/C dir");
         //Console.WriteLine("Done writing to standard input");
         
@@ -325,20 +326,26 @@ public class Terminal
         SendKeys.SendWait("=");
     }
 
-    static internal void SendKeyTestCmdExe()
+    static internal void SendKeyTestCmdExe(IntPtr cmdHandler)
     {
+        /*
         IntPtr windowHandle = GetForegroundWindow();
         IntPtr childHandle;
 
-        //try to get a handle to IE's toolbar container
+        
         childHandle = FindWindow(null, "C:\\Windows\\system32\\cmd.exe");
 
+        
         if (childHandle == IntPtr.Zero)
         {
             System.Windows.MessageBox.Show("cmd.exe is not running.");
         }
-        SetForegroundWindow(childHandle);
-        SendKeys.SendWait("chewie#3{ENTER}");
+         * */
+          
+        //SetForegroundWindow(childHandle);
+
+        SetForegroundWindow(cmdHandler);
+        SendKeys.SendWait(password + "{ENTER}");
 
         Console.WriteLine("sent keys");
 
