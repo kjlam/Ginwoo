@@ -7,6 +7,7 @@ using System.Text.RegularExpressions;
 // For password prompt
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Microsoft.Win32;
 
 public class Terminal
 {
@@ -183,8 +184,9 @@ public class Terminal
 
         // Make it so the terminal isn't displayed on the screen when executing commands
         //startInfo.CreateNoWindow = true;
-
+        //startInfo.CreateNoWindow = false;
         //startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+        startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Maximized;
 
         // The cmd terminal
         startInfo.FileName = "cmd.exe";
@@ -202,10 +204,33 @@ public class Terminal
         
 
         process.Start();
+        //process.WaitForInputIdle();
         //System.Threading.Thread.Sleep(10000);
+        //System.Console.WriteLine("process handle = " + process.MainWindowHandle);
+        //System.Console.WriteLine("process main window title = " + process.MainWindowTitle);
+        //Console.WriteLine("Try via WIN32: " + Microsoft.Win32.GetMainProcessWindow(process.Id));
+        //process.Refresh();
+        /*
+        while (process.MainWindowHandle == IntPtr.Zero)
+        {
+            System.Console.WriteLine("process handle = " + process.MainWindowHandle);
+            System.Console.WriteLine("process main window title = " + process.MainWindowTitle);
+
+            process = Process.GetProcessById(process.Id);
+            process.Refresh();
+            System.Threading.Thread.Sleep(100);
+        }
+         * */
+
+
+        //System.Console.WriteLine("process handle = " + process.MainWindowHandle);
+        //System.Console.WriteLine("process main window title = " + process.MainWindowTitle);
         SendKeyTestCmdExe(process.MainWindowHandle);
 
-        //process.StandardInput.WriteLine("/C dir");
+        //System.Threading.Thread.Sleep(10000);
+        //BinaryWriter stdin = new BinaryWriter(process.StandardInput.BaseStream);
+        //stdin.Write(password);
+        //process.StandardInput.Write(password + "\n");
         //Console.WriteLine("Done writing to standard input");
         
         //String stdout = process.StandardOutput.ReadToEnd();
@@ -287,7 +312,7 @@ public class Terminal
 
 
 
-
+    /*
     // Get a handle to an application window.
     [DllImport("USER32.DLL", CharSet = CharSet.Unicode)]
     public static extern IntPtr FindWindow(string lpClassName,
@@ -302,69 +327,27 @@ public class Terminal
 
     [DllImport("USER32.DLL", CharSet = CharSet.Auto, ExactSpelling = true)]
     public static extern IntPtr GetForegroundWindow();
+     * */
 
-    // Send a series of key presses to the Calculator application.
-    private void SendKeyTest()
-    {
-        // Get a handle to the Calculator application. The window class
-        // and window name were obtained using the Spy++ tool.
-        IntPtr calculatorHandle = FindWindow("CalcFrame", "Calculator");
+    // Activate an application window.
+    [DllImport("USER32.DLL")]
+    public static extern bool SetForegroundWindow(IntPtr hWnd);
 
-        // Verify that Calculator is a running process.
-        if (calculatorHandle == IntPtr.Zero)
-        {
-            System.Windows.MessageBox.Show("Calculator is not running.");
-            return;
-        }
-
-        // Make Calculator the foreground application and send it 
-        // a set of calculations.
-        SetForegroundWindow(calculatorHandle);
-        SendKeys.SendWait("111");
-        SendKeys.SendWait("*");
-        SendKeys.SendWait("11");
-        SendKeys.SendWait("=");
-    }
+    [DllImport("USER32.DLL", CharSet = CharSet.Auto, ExactSpelling = true)]
+    public static extern IntPtr GetForegroundWindow();
 
     static internal void SendKeyTestCmdExe(IntPtr cmdHandler)
     {
-        /*
-        IntPtr windowHandle = GetForegroundWindow();
-        IntPtr childHandle;
-
-        
-        childHandle = FindWindow(null, "C:\\Windows\\system32\\cmd.exe");
-
-        
-        if (childHandle == IntPtr.Zero)
-        {
-            System.Windows.MessageBox.Show("cmd.exe is not running.");
-        }
-         * */
-          
-        //SetForegroundWindow(childHandle);
-
+        System.Console.WriteLine("cmdHandler = " + cmdHandler.ToString());
         SetForegroundWindow(cmdHandler);
+
+        System.Console.WriteLine(SetForegroundWindow(cmdHandler));
+
+        
+        System.Console.WriteLine("actual foregrounder handler = " + GetForegroundWindow().ToString());
+
+        //Debug.Assert(cmdHandler == GetForegroundWindow());
+
         SendKeys.SendWait(password + "{ENTER}");
-
-        Console.WriteLine("sent keys");
-
-        /*
-        // Get a handle to the Calculator application. The window class
-        // and window name were obtained using the Spy++ tool.
-        IntPtr h = FindWindow(null, "C:\\Windows\\system32\\cmd.exe");
-
-        // Verify that Calculator is a running process.
-        if (h == IntPtr.Zero)
-        {
-            System.Windows.MessageBox.Show("cmd.exe is not running.");
-            return;
-        }
-
-        // Make Calculator the foreground application and send it 
-        // a set of calculations.
-        SetForegroundWindow(h);
-         * */
-
     }
 }
