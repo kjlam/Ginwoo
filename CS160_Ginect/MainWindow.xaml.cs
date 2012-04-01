@@ -48,8 +48,8 @@ namespace CS160_Ginect
             //String output = Terminal.GitTagLatestCommit("lastCommit");
             //String output = Terminal.GitPush();
 
-            int output = Terminal.TestModularTerminal();
-            System.Windows.MessageBox.Show(output.ToString());
+            CmdReturn cmdReturn = Terminal.TestModularTerminal();
+            System.Windows.MessageBox.Show(cmdReturn.ToString());
             
 
             //SendKeyTestCmdExe();

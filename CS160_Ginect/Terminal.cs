@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using Microsoft.VisualBasic;
+using CS160_Ginect;
 
 public class Terminal
 {
@@ -19,14 +20,48 @@ public class Terminal
     {
     }
 
+    // Just for light testing
+    static internal CmdReturn TestModularTerminal()
+    {
+        // Test GitLog()
+        // return GitLog();
+
+        // Test git status
+        // return ExecuteProcess(workingDirectory, "git status", false);
+
+        // Test GitAddFilesToCommit()
+        /*
+        List<String> filesList = new List<string>();
+        filesList.Add("jessica.txt");
+        filesList.Add("jessica2.txt");
+        return GitAddFilesToCommit(filesList);
+         * */
+        
+
+
+        //return ExecuteCommandWithPassword(workingDirectory, "git push", password);
+
+    }
+
     /*
      * GitAddFilesToCommit()
      * 
      * This executes a 'git add <file1> <file2> .. <fileN>' command.
      * 
      */ 
-    static internal String GitAddFilesToCommit(List<String> filesList)
+    static internal CmdReturn /*String*/ GitAddFilesToCommit(List<String> filesList)
     {
+        String filesStr = "";
+
+        filesList.ForEach(delegate(String file)
+        {
+            filesStr += " ";
+            filesStr += file;
+        });
+
+        return ExecuteProcess(workingDirectory, "git add" + filesStr, false);
+
+        /*
         String filesStr = "";
 
         filesList.ForEach(delegate(String file)
@@ -40,6 +75,7 @@ public class Terminal
         // TODO: check stdout for success or failure
 
         return ParseStdOut(stdout);
+         * */
     }
 
 
@@ -143,6 +179,11 @@ public class Terminal
         return modifiedFiles;
     }
 
+    static internal CmdReturn GitLog()
+    {
+        return ExecuteProcess(workingDirectory, "git log", false);
+    }
+
     /*
      * ExecuteCommand()
      * 
@@ -171,11 +212,82 @@ public class Terminal
 
         process.Start();
 
-        String stdout = process.StandardOutput.ReadToEnd();
+        String stdout = ParseStdOut(process.StandardOutput.ReadToEnd());
         process.WaitForExit();
         process.Close();
 
         return stdout;
+    }
+
+    static private CmdReturn ExecuteProcess(String directory, String command, bool needToInputPassword)
+    {
+        Process process = new System.Diagnostics.Process();
+        ProcessStartInfo startInfo = new ProcessStartInfo();
+
+        if (needToInputPassword)
+        {
+            // The terminal is displayed, only used for sending the password to the terminal.
+            // As in, can't find a way to hide the window AND send the password successfully.
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Maximized;
+        }
+        else
+        {
+            // Make it so the terminal isn't displayed on the screen when executing commands
+            startInfo.CreateNoWindow = true;
+        }
+
+        // The cmd terminal
+        startInfo.FileName = "cmd.exe";
+
+        Directory.SetCurrentDirectory(directory);
+
+        startInfo.Arguments = "/C " + command;
+        process.StartInfo = startInfo;
+
+        process.StartInfo.UseShellExecute = false;
+        process.StartInfo.RedirectStandardOutput = true;
+        process.StartInfo.RedirectStandardInput = true;
+
+        CmdReturn cmdReturn = new CmdReturn();
+        process.Start();
+
+        if (needToInputPassword)
+        {
+            cmdReturn.inputSuccess = SendPasswordToStdin();
+        }
+
+        cmdReturn.stdout = process.StandardOutput.ReadToEnd();
+        process.WaitForExit();
+        cmdReturn.exitCode = process.ExitCode;
+        process.Close();
+
+        return cmdReturn;
+    }
+
+    static private CmdReturn.InputResult SendPasswordToStdin()
+    {
+        Process[] processes = Process.GetProcessesByName("cmd");
+        int numProcesses = processes.Length;
+
+        if (numProcesses > 0)
+        {
+            IntPtr mainWindowHandle = processes[numProcesses - 1].MainWindowHandle;
+            SetForegroundWindow(mainWindowHandle);
+
+            // SetForegroundWindow() failed
+            if (mainWindowHandle != GetForegroundWindow())
+            {
+                return CmdReturn.InputResult.FAIL;
+            }
+
+            SendKeys.SendWait(password + "{ENTER}");
+            return CmdReturn.InputResult.SUCCESS;
+        }
+        // No processes found matching "cmd"
+        else
+        {
+            return CmdReturn.InputResult.FAIL;
+        }
     }
 
     static private int ExecuteCommandWithPassword(String directory, String command, String password)
@@ -325,13 +437,7 @@ public class Terminal
         return writer.ToString();
     }
 
-    // Just for light testing
-    static internal int TestModularTerminal()
-    {
-        return ExecuteCommandWithPassword(workingDirectory, "git push", password);
-
-        // TODO: check stdout for success or failure
-    }
+    
 
 
 
