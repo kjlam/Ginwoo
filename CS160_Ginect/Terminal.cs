@@ -205,7 +205,7 @@ public class Terminal
         
 
         process.Start();
-        
+        /*
         try
         {
             process.WaitForInputIdle();
@@ -215,13 +215,14 @@ public class Terminal
         {
             Console.WriteLine("{0} Exception caught.", e);
         }
-
+         * */
         Process[] processlist = Process.GetProcesses();
-
+        
         foreach (Process theprocess in processlist)
         {
-            Console.WriteLine("Process: {0} ID: {1}", process.ProcessName, process.Id);
+            Console.WriteLine("Process: {0} ID: {1} MainWindowHandle: {2}", process.ProcessName, process.Id, process.MainWindowHandle);
         }
+        
         //process.WaitForInputIdle();
         //System.Threading.Thread.Sleep(10000);
         //System.Console.WriteLine("process handle = " + process.MainWindowHandle);
@@ -366,11 +367,13 @@ public class Terminal
         IntPtr windowHandle = IntPtr.Zero;
         
         Process[] processes = Process.GetProcessesByName("cmd");
-        Debug.WriteLine("all processes = " + processes.ToString());
+        //Debug.WriteLine("all processes = " + processes.ToString());
         if (processes.Length > 0)
         {
-            IntPtr mainWindowHandle = processes[0].MainWindowHandle;
-            Debug.WriteLine("processes[0] = " + processes[0].ProcessName);
+            int last = processes.Length-1;
+            IntPtr mainWindowHandle = processes[last].MainWindowHandle;
+            Debug.WriteLine("processes[last].ProcessName = " + processes[last].ProcessName);
+            Debug.WriteLine("processes[last].Id = " + processes[last].Id);
             Debug.WriteLine("main window handle = " + mainWindowHandle);
             windowHandle = mainWindowHandle;
             
@@ -381,10 +384,12 @@ public class Terminal
         if (!SetForegroundWindow(windowHandle))
         {
             Debug.WriteLine("SET FOREGROUND WINDOW FAILED");
+            Debug.WriteLine("foreground window handle = " + GetForegroundWindow());
         }
         else
         {
             Debug.WriteLine("SET FOREGROUND WINDOW SUCCESS");
+            Debug.WriteLine("foreground window handle = " + GetForegroundWindow());
         }
 
         //System.Console.WriteLine("cmdHandler = " + cmdHandler);
