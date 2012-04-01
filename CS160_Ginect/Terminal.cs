@@ -14,7 +14,7 @@ using CS160_Ginect;
 public class Terminal
 {
     static internal String workingDirectory = @"C:\Users\Jessica\Ginect";
-    static internal String password = "password";
+    static internal String password = "chewie#3";
 
     public Terminal()
     {
@@ -24,7 +24,7 @@ public class Terminal
     static internal CmdReturn TestModularTerminal()
     {
         // Test GitLog()
-        // return GitLog();
+        //return GitLog();
 
         // Test git status
         // return ExecuteProcess(workingDirectory, "git status", false);
@@ -37,9 +37,14 @@ public class Terminal
         return GitAddFilesToCommit(filesList);
          * */
         
+        // Test GitCommitWithMessage()
+        // return GitCommitWithMessage("Another test commit");
 
+        // Test GitTagLatestCommit()
+        // return GitTagLatestCommit("testTag");
 
-        //return ExecuteCommandWithPassword(workingDirectory, "git push", password);
+        // Test GitPush()
+        return GitPush();
 
     }
 
@@ -49,7 +54,7 @@ public class Terminal
      * This executes a 'git add <file1> <file2> .. <fileN>' command.
      * 
      */ 
-    static internal CmdReturn /*String*/ GitAddFilesToCommit(List<String> filesList)
+    static internal CmdReturn GitAddFilesToCommit(List<String> filesList)
     {
         String filesStr = "";
 
@@ -60,26 +65,10 @@ public class Terminal
         });
 
         return ExecuteProcess(workingDirectory, "git add" + filesStr, false);
-
-        /*
-        String filesStr = "";
-
-        filesList.ForEach(delegate(String file)
-        {
-            filesStr += " ";
-            filesStr += file;
-        });
-
-        String stdout = ExecuteCommand(workingDirectory, "git add" + filesStr);
-
-        // TODO: check stdout for success or failure
-
-        return ParseStdOut(stdout);
-         * */
     }
 
 
-    static internal String GitTagLatestCommit(String tagName)
+    static internal CmdReturn GitTagLatestCommit(String tagName)
     {
         String latestCommitID = GetLatestCommitID();
         return GitTag(tagName, latestCommitID);
@@ -127,13 +116,9 @@ public class Terminal
      * A 'git commit' must be made before this method.
      * 
      */ 
-    static private String GitTag(String tagName, String commitID)
+    static private CmdReturn GitTag(String tagName, String commitID)
     {
-        String stdout = ExecuteCommand(workingDirectory, "git tag -f " + tagName + " " + commitID);
-
-        // TODO: check stdout for success or failure
-
-        return ParseStdOut(stdout);
+        return ExecuteProcess(workingDirectory, "git tag -f " + tagName + " " + commitID, false);
     }
 
     /*
@@ -142,13 +127,9 @@ public class Terminal
      * This executes a 'git commit -m "My message"' command.
      * 
      */ 
-    static internal String GitCommitWithMessage(String message)
+    static internal CmdReturn GitCommitWithMessage(String message)
     {
-        String stdout = ExecuteCommand(workingDirectory, "git commit -m \"" + message + "\"");
-
-        // TODO: check stdout for success or failure
-
-        return ParseStdOut(stdout);
+        return ExecuteProcess(workingDirectory, "git commit -m \"" + message + "\"", false);
     }
 
     /*
@@ -158,13 +139,11 @@ public class Terminal
      * before calling this method.
      * 
      */ 
-    static internal String GitPush()
+    static internal CmdReturn GitPush()
     {
-        String stdout = ExecuteCommand(workingDirectory, "git push --tags");
+        return ExecuteProcess(workingDirectory, "git push", true);
 
-        // TODO: check stdout for success or failure
-
-        return ParseStdOut(stdout);
+        // TODO: Figure out if git push was executed correctly
     }
 
     // TODO: Complete this method. Return a list of files that have been modified
@@ -251,12 +230,19 @@ public class Terminal
         CmdReturn cmdReturn = new CmdReturn();
         process.Start();
 
+        // For debugging purposes, do not delete!
+        Process[] processlist = Process.GetProcesses();
+        foreach (Process theprocess in processlist)
+        {
+            Console.WriteLine("Process: {0} ID: {1} MainWindowHandle: {2}", process.ProcessName, process.Id, process.MainWindowHandle);
+        }
+        
         if (needToInputPassword)
         {
             cmdReturn.inputSuccess = SendPasswordToStdin();
         }
 
-        cmdReturn.stdout = process.StandardOutput.ReadToEnd();
+        cmdReturn.stdout = ParseStdOut(process.StandardOutput.ReadToEnd());
         process.WaitForExit();
         cmdReturn.exitCode = process.ExitCode;
         process.Close();
@@ -271,13 +257,26 @@ public class Terminal
 
         if (numProcesses > 0)
         {
-            IntPtr mainWindowHandle = processes[numProcesses - 1].MainWindowHandle;
-            SetForegroundWindow(mainWindowHandle);
-
-            // SetForegroundWindow() failed
-            if (mainWindowHandle != GetForegroundWindow())
+            IntPtr mainWindowHandle = IntPtr.Zero;
+            foreach (Process process in processes)
             {
-                return CmdReturn.InputResult.FAIL;
+                if (!process.MainWindowHandle.Equals(IntPtr.Zero))
+                {
+                    mainWindowHandle = process.MainWindowHandle;
+                    break;
+                }
+            }
+
+            // Actual code + debugging, do not delete
+            if (!SetForegroundWindow(mainWindowHandle))
+            {
+                Debug.WriteLine("SET FOREGROUND WINDOW FAILED");
+                Debug.WriteLine("foreground window handle = " + GetForegroundWindow());
+            }
+            else
+            {
+                Debug.WriteLine("SET FOREGROUND WINDOW SUCCESS");
+                Debug.WriteLine("foreground window handle = " + GetForegroundWindow());
             }
 
             SendKeys.SendWait(password + "{ENTER}");
