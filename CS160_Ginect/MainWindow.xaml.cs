@@ -50,6 +50,7 @@ namespace CS160_Ginect
 
             int output = Terminal.TestModularTerminal();
             System.Windows.MessageBox.Show(output.ToString());
+            
 
             //SendKeyTestCmdExe();
         }

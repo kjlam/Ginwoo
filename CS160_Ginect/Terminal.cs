@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
+using Microsoft.VisualBasic;
 
 public class Terminal
 {
@@ -204,6 +205,23 @@ public class Terminal
         
 
         process.Start();
+        
+        try
+        {
+            process.WaitForInputIdle();
+        }
+
+        catch (Exception e)
+        {
+            Console.WriteLine("{0} Exception caught.", e);
+        }
+
+        Process[] processlist = Process.GetProcesses();
+
+        foreach (Process theprocess in processlist)
+        {
+            Console.WriteLine("Process: {0} ID: {1}", process.ProcessName, process.Id);
+        }
         //process.WaitForInputIdle();
         //System.Threading.Thread.Sleep(10000);
         //System.Console.WriteLine("process handle = " + process.MainWindowHandle);
@@ -225,7 +243,11 @@ public class Terminal
 
         //System.Console.WriteLine("process handle = " + process.MainWindowHandle);
         //System.Console.WriteLine("process main window title = " + process.MainWindowTitle);
-        SendKeyTestCmdExe(process.MainWindowHandle);
+
+        //System.Console.WriteLine("process handle = " + process.Handle);
+        //SendKeyTestCmdExe(process.Handle);
+        //SendKeyTestCmdExe(process.MainWindowHandle);
+        SendKeyTestCmdExe();
 
         //System.Threading.Thread.Sleep(10000);
         //BinaryWriter stdin = new BinaryWriter(process.StandardInput.BaseStream);
@@ -336,15 +358,45 @@ public class Terminal
     [DllImport("USER32.DLL", CharSet = CharSet.Auto, ExactSpelling = true)]
     public static extern IntPtr GetForegroundWindow();
 
-    static internal void SendKeyTestCmdExe(IntPtr cmdHandler)
-    {
-        System.Console.WriteLine("cmdHandler = " + cmdHandler.ToString());
-        SetForegroundWindow(cmdHandler);
+    [DllImport("USER32.DLL")]
+    static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
-        System.Console.WriteLine(SetForegroundWindow(cmdHandler));
+    static internal void SendKeyTestCmdExe(/* IntPtr cmdHandler */)
+    {
+        IntPtr windowHandle = IntPtr.Zero;
+        
+        Process[] processes = Process.GetProcessesByName("cmd");
+        Debug.WriteLine("all processes = " + processes.ToString());
+        if (processes.Length > 0)
+        {
+            IntPtr mainWindowHandle = processes[0].MainWindowHandle;
+            Debug.WriteLine("processes[0] = " + processes[0].ProcessName);
+            Debug.WriteLine("main window handle = " + mainWindowHandle);
+            windowHandle = mainWindowHandle;
+            
+        }
+
+
+
+        if (!SetForegroundWindow(windowHandle))
+        {
+            Debug.WriteLine("SET FOREGROUND WINDOW FAILED");
+        }
+        else
+        {
+            Debug.WriteLine("SET FOREGROUND WINDOW SUCCESS");
+        }
+
+        //System.Console.WriteLine("cmdHandler = " + cmdHandler);
+        //SetForegroundWindow(cmdHandler);
+
+        //System.Console.WriteLine(SetForegroundWindow(cmdHandler));
+
+        //ShowWindow(cmdHandler, 1);
+        //System.Console.WriteLine(ShowWindow(cmdHandler, 1));
 
         
-        System.Console.WriteLine("actual foregrounder handler = " + GetForegroundWindow().ToString());
+        //System.Console.WriteLine("actual foregrounder handler = " + GetForegroundWindow().ToString());
 
         //Debug.Assert(cmdHandler == GetForegroundWindow());
 
