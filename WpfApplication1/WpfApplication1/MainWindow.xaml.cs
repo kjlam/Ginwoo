@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.ComponentModel;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -11,6 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+using Microsoft.Kinect;
+using Microsoft.Speech.AudioFormat;
+using Microsoft.Speech.Recognition;
+using System.Threading;
+using Coding4Fun.Kinect.Wpf;
 
 namespace WpfApplication1
 {
@@ -19,10 +26,7 @@ namespace WpfApplication1
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+
 
         private void image5_ImageFailed(object sender, ExceptionRoutedEventArgs e)
         {
@@ -40,6 +44,11 @@ namespace WpfApplication1
         }
 
         private void image7_ImageFailed(object sender, ExceptionRoutedEventArgs e)
+        {
+
+        }
+
+        private void image3_ImageFailed(object sender, ExceptionRoutedEventArgs e)
         {
 
         }

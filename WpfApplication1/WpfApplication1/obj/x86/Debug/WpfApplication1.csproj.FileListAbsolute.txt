@@ -11,3 +11,22 @@ c:\users\benj\documents\visual studio 2010\Projects\WpfApplication1\WpfApplicati
 c:\users\benj\documents\visual studio 2010\Projects\WpfApplication1\WpfApplication1\obj\x86\Debug\GenerateResource.write.1.tlog
 c:\users\benj\documents\visual studio 2010\Projects\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.exe
 c:\users\benj\documents\visual studio 2010\Projects\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.pdb
+C:\Users\Kelvin\CS160_Ginect\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.exe
+C:\Users\Kelvin\CS160_Ginect\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.pdb
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.exe
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.pdb
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\obj\x86\Debug\MainWindow.baml
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\obj\x86\Debug\MainWindow.g.cs
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\obj\x86\Debug\App.g.cs
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1_MarkupCompile.cache
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.g.resources
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.Properties.Resources.resources
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.csproj.GenerateResource.Cache
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\bin\Debug\WpfApplication1.exe
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\bin\Debug\WpfApplication1.pdb
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\bin\Debug\Coding4Fun.Kinect.Wpf.dll
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.dll
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\bin\Debug\Microsoft.Expression.Drawing.dll
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
+G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.csprojResolveAssemblyReference.cache
