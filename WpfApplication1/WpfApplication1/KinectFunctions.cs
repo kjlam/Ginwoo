@@ -105,6 +105,7 @@ namespace WpfApplication1
         bool back = false;
         double[] RHPos = new double[2];
         bool selectActivated = false;
+        
 
     #region mouseEmulation
     [DllImport("user32.dll")]
@@ -541,8 +542,8 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
                         leftDifference[j] = firstSkeleton[j] - secondSkeleton[j];
                         rightDifference[j] = firstSkeleton[j + 3] - secondSkeleton[j + 3];
                     }
-                    RHPos[0] = firstSkeleton[3];
-                    RHPos[1] = firstSkeleton[4];
+                    //RHPos[0] = firstSkeleton[3];
+                    //RHPos[1] = firstSkeleton[4];
 
                     for (int k = 0; k < 3; k++)
                     {
@@ -649,15 +650,17 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
         
         void FollowPointer()
         {
-              SetCursorPos((int)RHPos[0], (int)RHPos[1]);
-              double fx = RHPos[0]*(65535.0f/1280);
-              double fy = RHPos[1]*(65535.0f/720);
+              SetCursorPos((int)(RHPos[0]), (int)(RHPos[1]));
+            /*
+              double fx = RHPos[0];
+              double fy = RHPos[1];
               INPUT  Input= new INPUT();
               Input.type = SendInputEventType.InputMouse;;
               Input.mi.dwFlags = MouseEventFlags.MOVE | MouseEventFlags.ABSOLUTE;
               Input.mi.dx = (int)fx;
               Input.mi.dy = (int)fy;
-              //SendInput(1,ref Input,Marshal.SizeOf(new INPUT()));
+              SendInput(1,ref Input,Marshal.SizeOf(new INPUT()));
+             */
         }
 
         void GetCameraPoint(Skeleton first, AllFramesReadyEventArgs e)
@@ -700,7 +703,7 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
                 //Set location
                 //CameraPosition(headImage, headColorPoint);
                 //CameraPosition(leftEllipse, leftColorPoint);
-                CameraPosition(rightEllipse, rightColorPoint);
+                //CameraPosition(rightEllipse, rightColorPoint);
             }
         }
 
@@ -775,12 +778,12 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             //Joint scaledJoint = joint.ScaleTo(1280, 720); 
              
             //convert & scale (.3 = means 1/3 of joint distance)
-            Joint scaledJoint = joint.ScaleTo(1600, 900, 0.1f, 0.1f);
-            InkCanvas.SetLeft(element, scaledJoint.Position.X);
-            InkCanvas.SetTop(element, scaledJoint.Position.Y);
+            Joint scaledJoint = joint.ScaleTo(1280, 720, 0.3f, 0.3f);
+            InkCanvas.SetLeft(element, scaledJoint.Position.X-element.Width/2);
+            InkCanvas.SetTop(element, scaledJoint.Position.Y-element.Height/2);
             textBox.RightPos = (int)scaledJoint.Position.X + " " + (int)scaledJoint.Position.Y + "\n";
-            RHPos[0] = scaledJoint.Position.X;
-            RHPos[1] = scaledJoint.Position.Y;
+            RHPos[0] = scaledJoint.Position.X - element.Width/2;
+            RHPos[1] = scaledJoint.Position.Y - element.Height/2;
         }
 
     }
