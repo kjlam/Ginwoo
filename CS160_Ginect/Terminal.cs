@@ -14,7 +14,7 @@ using CS160_Ginect;
 public class Terminal
 {
     static internal String workingDirectory = @"C:\Users\Jessica\Ginect";
-    static internal String password = "chewie#3";
+    static internal String password = "password";
 
     public Terminal()
     {
