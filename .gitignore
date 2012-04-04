@@ -1,0 +1,12 @@
+*~
+*.tmp
+CS160_Ginect/obj
+CS160_Ginect\obj\x86\Debug\*
+CS160_Ginect\obj\x86\Debug\TempPE\*
+
+CS160_Ginect\bin\*
+CS160_Ginect\bin\Debug\*
+
+CS160_Ginect.suo
+
+
