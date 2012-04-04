@@ -206,3 +206,29 @@ E:\Dropbox\sen\cs160\Assignment4\Dependencies\KinectWpfViewers\obj\Debug\Generat
 E:\Dropbox\sen\cs160\Assignment4\Dependencies\KinectWpfViewers\obj\Debug\GenerateResource.write.1.tlog
 E:\Dropbox\sen\cs160\Assignment4\Dependencies\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers.dll
 E:\Dropbox\sen\cs160\Assignment4\Dependencies\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.dll
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectSettings.baml
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectSensorChooser.g.cs
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectAudioViewer.g.cs
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectDepthViewer.g.cs
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectColorViewer.g.cs
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectDiagnosticViewer.g.cs
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectSettings.g.cs
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectSkeletonViewer.g.cs
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers_MarkupCompile.cache
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers_MarkupCompile.lref
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectSensorChooser.baml
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectAudioViewer.baml
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectDepthViewer.baml
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectColorViewer.baml
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectDiagnosticViewer.baml
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\KinectSkeletonViewer.baml
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers.g.resources
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers.Properties.Resources.resources
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\GenerateResource.read.1.tlog
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\GenerateResource.write.1.tlog
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers.dll
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\Dependencies\KinectWpfViewers\obj\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb

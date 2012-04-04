@@ -52,5 +52,15 @@ namespace WpfApplication1
         {
 
         }
+
+        private void inkCanvas_Gesture(object sender, InkCanvasGestureEventArgs e)
+        {
+
+        }
+
+        private void inkCanvas_Gesture_1(object sender, InkCanvasGestureEventArgs e)
+        {
+
+        }
     }
 }

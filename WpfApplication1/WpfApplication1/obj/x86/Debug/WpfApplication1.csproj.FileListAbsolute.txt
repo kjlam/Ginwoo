@@ -30,3 +30,21 @@ G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication
 G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb
 G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
 G:\MyDropBox\Dropbox\sen\cs160\Ginect Kinect Test\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.csprojResolveAssemblyReference.cache
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.exe
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.pdb
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\bin\Debug\WpfApplication1.exe
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\bin\Debug\WpfApplication1.pdb
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\bin\Debug\Coding4Fun.Kinect.Wpf.dll
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.dll
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\bin\Debug\Microsoft.Expression.Drawing.dll
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\bin\Debug\Microsoft.Samples.Kinect.WpfViewers.pdb
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\bin\Debug\Coding4Fun.Kinect.Wpf.pdb
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\MainWindow.baml
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\MainWindow.g.cs
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\App.g.cs
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1_MarkupCompile.cache
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.g.resources
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.Properties.Resources.resources
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\GenerateResource.write.1.tlog
