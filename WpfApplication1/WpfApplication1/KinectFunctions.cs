@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Windows.Forms;
 using Microsoft.Kinect;
 using Microsoft.Speech.AudioFormat;
 using Microsoft.Speech.Recognition;
@@ -105,7 +106,7 @@ namespace WpfApplication1
         bool back = false;
         double[] RHPos = new double[2];
         bool selectActivated = false;
-        
+        private string tagName = "";
 
     #region mouseEmulation
     [DllImport("user32.dll")]
@@ -192,15 +193,7 @@ namespace WpfApplication1
     }
 
         #endregion
-    public MainWindow()
-        {
-            InitializeComponent();
-            this.DataContext = textBox;
-            selectTimer.Tick += new EventHandler(SelectTimer_Root);
-            selectTimer.Interval = new TimeSpan(0, 0, 1);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 2);
-            waitTimer.Interval = new TimeSpan(0, 0, 1);
-        }
+
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -369,7 +362,7 @@ namespace WpfApplication1
             RecognizerInfo ri = GetKinectRecognizer();
             if (ri == null)
             {
-                MessageBox.Show(
+                System.Windows.MessageBox.Show(
                     @"There was a problem initializing Speech Recognition.
 Ensure you have the Microsoft Speech SDK installed.",
                     "Failed to load Speech SDK",
@@ -386,7 +379,7 @@ Ensure you have the Microsoft Speech SDK installed.",
             }
             catch
             {
-                MessageBox.Show(
+                System.Windows.MessageBox.Show(
                     @"There was a problem initializing Speech Recognition.
 Ensure you have the Microsoft Speech SDK installed and configured.",
                     "Failed to load Speech SDK",
@@ -401,6 +394,32 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             #region Build grammar
             var wordChoices = new Choices();
             wordChoices.Add("hello world");
+            wordChoices.Add("a");
+            wordChoices.Add("b");
+            wordChoices.Add("c");
+            wordChoices.Add("d");
+            wordChoices.Add("e");
+            wordChoices.Add("f");
+            wordChoices.Add("g");
+            wordChoices.Add("h");
+            wordChoices.Add("i");
+            wordChoices.Add("j");
+            wordChoices.Add("k");
+            wordChoices.Add("l");
+            wordChoices.Add("m");
+            wordChoices.Add("n");
+            wordChoices.Add("o");
+            wordChoices.Add("p");
+            wordChoices.Add("q");
+            wordChoices.Add("r");
+            wordChoices.Add("s");
+            wordChoices.Add("t");
+            wordChoices.Add("u");
+            wordChoices.Add("V");
+            wordChoices.Add("W");
+            wordChoices.Add("X");
+            wordChoices.Add("Y");
+            wordChoices.Add("Z");
             wordChoices.Add("cancel");
             wordChoices.Add("reset");
             wordChoices.Add("done");
@@ -477,25 +496,55 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
 
             //switch (output[0].ToUpperInvariant())
             //TODO: actions that will be performed for each grammar
-            switch (e.Result.Semantics["Words"].Value.ToString().ToUpperInvariant())
+            string result = e.Result.Semantics["Words"].Value.ToString().ToUpperInvariant();
+            switch (result)
             {
                 case "CANCEL":
-
+                    textBox.Gesture += "";
+                    tagName = "";
+                    //call function to get rid of the tagBox
                     break;
                 case "RESET":
-
+                    textBox.Gesture += "";
+                    tagName = "";
                     break;
                 case "DONE":
-
+                    //call git tag function with the tagName string
                     break;
                 case "HELLO WORLD":
                     textBox.Gesture += "HELLO World";
                     break;
                 case "a":
-                    textBox.Gesture += "a";
+                case "b":
+                case "c":
+                case "d":
+                case "e":
+                case "f":
+                case "g":
+                case "h":
+                case "i":
+                case "j":
+                case "k":
+                case "l":
+                case "m":
+                case "n":
+                case "o":
+                case "p":
+                case "q":
+                case "r":
+                case "s":
+                case "t":
+                case "u":
+                case "v":
+                case "w":
+                case "x":
+                case "y":
+                case "z":
+                    string letter =  result.ToLowerInvariant();
+                    textBox.Gesture += letter;
+                    tagName += letter;
                     break;
                 default:
-
                     break;
             }
 
@@ -584,6 +633,7 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
                         {
                             //TODO: pull registered
                             textBox.Gesture += "Pull Registered";
+                            KinectPull(RHCounter[0], RHCounter[1]);
                         }
                     }
                     else
@@ -650,8 +700,10 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
         
         void FollowPointer()
         {
-              SetCursorPos((int)(RHPos[0]), (int)(RHPos[1]));
-            /*
+
+            System.Windows.Forms.Cursor.Position = new System.Drawing.Point((int)RHPos[0], (int)RHPos[1]);
+             // SetCursorPos((int)(RHPos[0]), (int)(RHPos[1]));
+            /*b
               double fx = RHPos[0];
               double fy = RHPos[1];
               INPUT  Input= new INPUT();
@@ -770,7 +822,7 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             Canvas.SetLeft(element, pointX - element.Width / 2);
             Canvas.SetTop(element, pointY + element.Height);
         }
-
+        
 
         private void ScalePosition(FrameworkElement element, Joint joint)
         {
@@ -785,6 +837,13 @@ Ensure you have the Microsoft Speech SDK installed and configured.",
             RHPos[0] = scaledJoint.Position.X - element.Width/2;
             RHPos[1] = scaledJoint.Position.Y - element.Height/2;
         }
+
+        void KinectPull(double x, double y)
+        {
+
+
+        }
+
 
     }
 }

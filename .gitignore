@@ -1,17 +1,24 @@
 *~
 *.tmp
 CS160_Ginect/obj
+CS160_Ginect/obj
 CS160_Ginect\obj\x86\Debug\*
 CS160_Ginect\obj\x86\Debug\TempPE\*
 
+CS160_Ginect/bin
 CS160_Ginect\bin\*
 CS160_Ginect\bin\Debug\*
 
 CS160_Ginect.suo
 
+wpfApplication1/wpfApplication1/obj
+WpfApplication1\WpfApplication1\obj\x86\Debug\*
+WpfApplication1\WpfApplication1\obj\x86\Debug\TempPE\*
 
-WpfApplication1\WpfAppliction1\obj\x86\Debug\*
-WpfApplication1\WpfAppliction1\obj\x86\Debug\TempPE\*
+wpfApplication1/wpfApplication1/bin
+WpfApplication1\WpfApplication1\bin\*
+WpfApplication1\WpfApplication1\bin\Debug\*
 
-WpfApplication1\WpfAppliction1\bin\*
-WpfApplication1\WpfAppliction1\bin\Debug\*
+wpfApplication1\wpfApplication1.suo
+
+Dependencies\KinectWpfViewers\obj\Debug\*
