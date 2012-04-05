@@ -48,3 +48,5 @@ C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x8
 C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\WpfApplication1.Properties.Resources.resources
 C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\LocalRepository.baml
+C:\Users\Benj\Desktop\CS 160\CS160_Ginect\WpfApplication1\WpfApplication1\obj\x86\Debug\LocalRepository.g.cs
