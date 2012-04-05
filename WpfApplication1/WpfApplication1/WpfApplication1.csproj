@@ -72,6 +72,9 @@
     <Compile Include="LocalRepository.xaml.cs">
       <DependentUpon>LocalRepository.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RemoteRepository.xaml.cs">
+      <DependentUpon>RemoteRepository.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,6 +89,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="LocalRepository.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RemoteRepository.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -130,9 +137,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\TagButton.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\HelpIcon.png" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +147,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\MenuLocal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\MenuRemote.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\TagButton.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\PushButton.png" />

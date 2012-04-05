@@ -25,7 +25,6 @@
         <TextBlock Grid.ColumnSpan="3" Height="101" HorizontalAlignment="Left" Margin="657,70,0,0" Name="StatusText" VerticalAlignment="Top" Width="448" Foreground="White" TextWrapping="Wrap"> 
             <Bold>You haven't added any files to this commit yet.</Bold> <LineBreak/> To add files to a commit, select them in the Files area to the left using the lasso motion and then
             drag them to your Commit area below. <LineBreak/><LineBreak/> <Bold>If you need help with any of the motions, or if something confuses you, simply click the question mark on the right for help. </Bold></TextBlock>
-        <Image Grid.Column="2" Height="85" HorizontalAlignment="Left" Margin="135,466,0,0" Name="image7" Stretch="UniformToFill" VerticalAlignment="Top" Width="91" Source="/WpfApplication1;component/Images/TagButton.png" ImageFailed="image7_ImageFailed" />
         <my:KinectColorViewer Canvas.Left="409" Canvas.Top="236" Width="94" Height="76" Name="kinectColorViewer1" 
                               Kinect="{Binding ElementName=kinectSensorChooser1, Path=Kinect}" DataContext="{Binding}" Margin="0,605,851,0" />
         <my:KinectSensorChooser Canvas.Left="60" Canvas.Top="108" Name="kinectSensorChooser1" Width="267" Height="168" Visibility="Hidden" />
