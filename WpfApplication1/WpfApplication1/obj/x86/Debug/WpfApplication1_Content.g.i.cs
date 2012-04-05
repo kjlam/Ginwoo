@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/pushbutton.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/menuremote.png")]
 
 
